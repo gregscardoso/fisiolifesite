@@ -1,0 +1,23 @@
+# Dependencies and Next.js output
+/node_modules/
+/.next/
+/out/
+
+# Environment and logs
+.env*
+!.env.example
+*.log
+npm-debug.log*
+
+# Local tooling
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+
+# Original design/reference material (not required at runtime)
+/photos/
+/ref/
+/uploads/
+/.thumbnail
+/Fisiolife Home.dc.html
+/support.js
