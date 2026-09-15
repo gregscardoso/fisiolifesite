@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Phone, WhatsApp } from "./icons";
 import { siteConfig } from "@/lib/site-config";
@@ -27,8 +28,15 @@ export function Header() {
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="header-inner">
         <a href="#inicio" className="wordmark" aria-label="Fisiolife - voltar ao início">
-          <span className="wordmark-mark">F</span>
-          <span className="wordmark-copy"><strong>FISIOLIFE</strong><small>Fisioterapia &amp; Pilates</small></span>
+          <Image
+            src="/images/brand/logo-fisiolife-verde.png"
+            width={1905}
+            height={826}
+            sizes="(max-width: 760px) 132px, 166px"
+            alt="Fisiolife Fisioterapia e Pilates"
+            className="header-logo"
+            priority
+          />
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           {siteConfig.nav.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}

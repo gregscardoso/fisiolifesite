@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-grid shell">
         <div>
-          <Image src="/images/brand/logo-fisiolife.png" width={150} height={138} alt="Fisiolife Fisioterapia e Pilates" className="footer-logo" />
+          <Image src="/images/brand/logo-fisiolife-branco.png" width={801} height={348} alt="Fisiolife Fisioterapia e Pilates" className="footer-logo" />
           <p>Fisioterapia, Pilates e quiropraxia com atendimento individualizado em Ibiúna.</p>
           <div className="socials">
             <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Fisiolife"><WhatsApp /></a>

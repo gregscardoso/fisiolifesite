@@ -61,13 +61,10 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
 .site-header { position: sticky; z-index: 60; top: 0; background: #fff; border-bottom: 1px solid rgb(28 38 33 / .06); transition: box-shadow .3s, background .3s; }
 .site-header.is-scrolled { background: rgb(255 255 255 / .9); box-shadow: 0 12px 34px -22px rgb(18 77 53 / .5); backdrop-filter: blur(14px); }
 .header-inner { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); width: min(100%, var(--shell)); height: clamp(72px, 7vw, 88px); margin: auto; padding-inline: var(--gutter); }
-.wordmark { display: flex; flex-shrink: 0; align-items: center; gap: 12px; }
-.wordmark-mark { display: grid; width: 40px; height: 40px; place-items: center; color: #fff; background: var(--forest); border-radius: 13px; font-size: 17px; font-weight: 800; }
-.wordmark-copy { display: flex; flex-direction: column; line-height: 1; }
-.wordmark-copy strong { color: var(--forest); font-size: 19px; letter-spacing: .01em; }
-.wordmark-copy small { margin-top: 4px; color: var(--muted); font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+.wordmark { display: flex; flex-shrink: 0; align-items: center; }
+.header-logo { width: clamp(132px, 13.5vw, 166px); height: auto; object-fit: contain; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(10px, 1.35vw, 22px); margin-left: auto; }
-.desktop-nav a { padding-block: 9px; border-bottom: 2px solid transparent; font-size: 14px; font-weight: 600; transition: color .2s, border-color .2s; }
+.desktop-nav a { padding-block: 9px; border-bottom: 2px solid transparent; font-size: 12.5px; font-weight: 700; letter-spacing: .035em; text-transform: uppercase; transition: color .2s, border-color .2s; }
 .desktop-nav a:hover { color: var(--leaf); border-color: var(--leaf); }
 .header-phone { display: flex; align-items: center; gap: 8px; color: var(--forest); font-size: 13.5px; font-weight: 700; white-space: nowrap; }
 .header-phone span { display: grid; width: 30px; height: 30px; place-items: center; color: var(--leaf); background: var(--mint); border-radius: 50%; }
@@ -261,7 +258,7 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
 /* Footer and conversion */
 .site-footer { color: #fff; background: #0f4430; }
 .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr .9fr 1.1fr; gap: clamp(32px,4vw,56px); padding-top: clamp(56px,6vw,88px); }
-.footer-logo { width: 150px; height: auto; border-radius: 14px; }
+.footer-logo { width: min(190px, 100%); height: auto; object-fit: contain; }
 .footer-grid p { max-width: 280px; margin: 20px 0 0; color: rgb(255 255 255 / .72); font-size: 15.5px; line-height: 1.6; }
 .socials { display: flex; gap: 10px; margin-top: 24px; }
 .socials a { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgb(255 255 255 / .22); border-radius: 50%; transition: background .25s; }
@@ -287,7 +284,7 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
   .menu-button { display: grid; margin-left: 0; }
   .mobile-menu { display: flex; flex-direction: column; padding-inline: var(--gutter); }
   .mobile-menu.is-open { max-height: 580px; padding-bottom: 24px; opacity: 1; }
-  .mobile-menu a { padding: 13px 4px; border-bottom: 1px solid rgb(28 38 33 / .06); font-size: 16px; font-weight: 600; }
+  .mobile-menu a { padding: 13px 4px; border-bottom: 1px solid rgb(28 38 33 / .06); font-size: 15px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
   .mobile-menu a:last-child { margin-top: 10px; color: var(--forest); font-weight: 800; }
   .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .testimonial-track { transform: translateX(calc(var(--slide) * (-50% - 10px))); }
@@ -301,9 +298,6 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
   .header-inner { height: 72px; }
   .header-cta { display: none; }
   .menu-button { margin-left: auto; }
-  .wordmark-mark { width: 38px; height: 38px; }
-  .wordmark-copy strong { font-size: 18px; }
-  .wordmark-copy small { font-size: 9.5px; }
   .hero { grid-template-columns: 1fr; gap: 46px; padding-top: 32px; }
   .hero h1 { font-size: clamp(38px,11.7vw,54px); }
   .hero-visual { margin: 8px 8px 0 0; }
