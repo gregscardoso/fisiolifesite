@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
+import { getTagsConfig } from "@/lib/site-data";
+import { AnalyticsTags } from "@/components/analytics-tags";
 
 const manrope = localFont({
   src: "./fonts/manrope-latin.woff2",
@@ -38,10 +40,14 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#124d35" };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const tags = await getTagsConfig();
   return (
     <html lang="pt-BR" className={`${manrope.variable} ${instrumentSerif.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <AnalyticsTags tags={tags} />
+      </body>
     </html>
   );
 }

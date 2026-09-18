@@ -1,22 +1,24 @@
 import Image from "next/image";
 import { ArrowRight } from "@/components/icons";
-import { services } from "@/lib/content";
-import { createWhatsAppUrl } from "@/lib/site-config";
+import type { Service } from "@/lib/content";
+import { getSiteContent, whatsappUrlFor, type ContactContent } from "@/lib/site-data";
 import { VideoTour } from "@/components/video-tour";
 
-export function ServicesSection() {
+export async function ServicesSection() {
+  const { services, contact } = await getSiteContent();
+  const published = services.filter((service) => service.published);
   return (
     <section id="servicos" className="section-white section-anchor">
       <div className="shell section-pad">
         <div className="split-heading reveal"><div><span className="kicker">Tratamentos</span><h2>Tratamentos pensados para o seu <em>bem-estar.</em></h2></div><p>Uma gama completa de serviços de saúde e bem-estar, conduzidos por uma equipe qualificada e adaptados às necessidades de cada paciente.</p></div>
-        <div className="services-grid">{services.map((service) => <ServiceCard key={service.name} {...service} />)}</div>
+        <div className="services-grid">{published.map((service) => <ServiceCard key={service.name} contact={contact} {...service} />)}</div>
       </div>
     </section>
   );
 }
 
-function ServiceCard({ name, description, image }: (typeof services)[number]) {
-  const href = createWhatsAppUrl(`Olá! Gostaria de saber mais sobre ${name} na Fisiolife.`);
+function ServiceCard({ name, description, image, contact }: Service & { contact: ContactContent }) {
+  const href = whatsappUrlFor(contact, `Olá! Gostaria de saber mais sobre ${name} na Fisiolife.`);
   return <a className="service-card reveal" href={href} target="_blank" rel="noopener noreferrer"><div className="service-image"><Image src={image} fill sizes="(max-width: 680px) 92vw, (max-width: 1024px) 45vw, 30vw" alt={name} /></div><div className="service-body"><h3>{name}</h3><p>{description}</p><span>Saiba mais<ArrowRight /></span></div></a>;
 }
 
@@ -37,9 +39,10 @@ export function StructureSection() {
       <div className="shell section-pad">
         <div className="section-heading reveal"><span className="kicker">Estrutura</span><h2>Estrutura preparada para <em>cuidar de você.</em></h2></div>
         <div className="structure-grid reveal">
-          <div className="structure-main"><Image src="/images/clinic/estudio-pilates.png" fill sizes="(max-width: 760px) 92vw, 48vw" alt="Estúdio de Pilates da Fisiolife" /></div>
-          <div className="structure-side"><div className="structure-pair"><div><Image src="/images/clinic/aparelho-pilates-em-uso.png" fill sizes="25vw" alt="Aparelho de Pilates em uso" /></div><div><Image src="/images/clinic/recepcao-fisiolife.png" fill sizes="25vw" alt="Recepção da Fisiolife" /></div></div><div className="equipment-card"><h3>Equipamentos de última geração</h3><p>Acreditamos que a qualidade do atendimento está diretamente ligada à qualidade dos equipamentos. Por isso investimos constantemente em tecnologia de ponta, em um ambiente confortável e com profissionais qualificados acompanhando cada sessão.</p><div><span>· Ambiente acolhedor</span><span>· Atendimento personalizado</span><span>· Equipe qualificada</span></div></div></div>
+          <div className="structure-video"><video autoPlay muted loop playsInline preload="metadata"><source src="/videos/estrutura-fisiolife-1.mp4" type="video/mp4" /></video></div>
+          <div className="structure-video"><video autoPlay muted loop playsInline preload="metadata"><source src="/videos/estrutura-fisiolife-2.mp4" type="video/mp4" /></video></div>
         </div>
+        <div className="equipment-card reveal"><h3>Equipamentos de última geração</h3><p>Acreditamos que a qualidade do atendimento está diretamente ligada à qualidade dos equipamentos. Por isso investimos constantemente em tecnologia de ponta, em um ambiente confortável e com profissionais qualificados acompanhando cada sessão.</p><div><span>· Ambiente acolhedor</span><span>· Atendimento personalizado</span><span>· Equipe qualificada</span></div></div>
       </div>
     </section>
   );

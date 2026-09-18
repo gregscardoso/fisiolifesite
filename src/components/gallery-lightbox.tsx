@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./icons";
-import { gallery } from "@/lib/content";
+import type { GalleryPhoto } from "@/lib/site-data";
 
-export function GalleryLightbox() {
+export function GalleryLightbox({ gallery }: { gallery: GalleryPhoto[] }) {
   const [index, setIndex] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const active = index !== null;
-  const move = (direction: number) => setIndex((value) => value === null ? 0 : (value + direction + gallery.length) % gallery.length);
+  const move = useCallback((direction: number) => setIndex((value) => value === null ? 0 : (value + direction + gallery.length) % gallery.length), [gallery.length]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -26,7 +26,7 @@ export function GalleryLightbox() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active]);
+  }, [active, move]);
 
   return <>
     <div className="gallery-grid reveal">{gallery.map((photo, photoIndex) => <button key={photo.src} type="button" onClick={() => setIndex(photoIndex)} aria-label={`Ampliar foto: ${photo.alt}`} style={{ aspectRatio: photo.ratio }}><Image src={photo.src} fill sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 24vw" alt={photo.alt} /></button>)}</div>

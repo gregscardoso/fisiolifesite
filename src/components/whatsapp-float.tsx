@@ -1,6 +1,8 @@
 import { WhatsApp } from "./icons";
-import { siteConfig } from "@/lib/site-config";
+import { getSiteContent, whatsappUrlFor } from "@/lib/site-data";
 
-export function WhatsAppFloat() {
-  return <><a className="whatsapp-float" href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp"><WhatsApp /></a><div className="mobile-conversion-bar"><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsApp />Agendar pelo WhatsApp</a></div></>;
+export async function WhatsAppFloat() {
+  const { contact } = await getSiteContent();
+  const whatsappUrl = whatsappUrlFor(contact);
+  return <><a className="whatsapp-float" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp"><WhatsApp /></a><div className="mobile-conversion-bar"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsApp />Agendar pelo WhatsApp</a></div></>;
 }

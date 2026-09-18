@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Phone, WhatsApp } from "./icons";
 import { siteConfig } from "@/lib/site-config";
 
-export function Header() {
+export function Header({ phone, phoneDisplay, whatsappUrl }: { phone: string; phoneDisplay: string; whatsappUrl: string }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const firstLink = useRef<HTMLAnchorElement>(null);
@@ -41,15 +41,15 @@ export function Header() {
         <nav className="desktop-nav" aria-label="Navegação principal">
           {siteConfig.nav.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </nav>
-        <a className="header-phone" href={`tel:${siteConfig.phone}`}><span><Phone /></span>{siteConfig.phoneDisplay}</a>
-        <a className="button button-primary header-cta" href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsApp />Agendar consulta</a>
+        <a className="header-phone" href={`tel:${phone}`}><span><Phone /></span>{phoneDisplay}</a>
+        <a className="button button-primary header-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsApp />Agendar consulta</a>
         <button className="menu-button" type="button" aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((value) => !value)}>
           <span className={open ? "is-open" : ""} />
         </button>
       </div>
       <div id="mobile-menu" className={`mobile-menu${open ? " is-open" : ""}`} aria-hidden={!open}>
         {siteConfig.nav.map((item, index) => <a ref={index === 0 ? firstLink : undefined} tabIndex={open ? 0 : -1} key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
-        <a tabIndex={open ? 0 : -1} href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
+        <a tabIndex={open ? 0 : -1} href={`tel:${phone}`}>{phoneDisplay}</a>
       </div>
     </header>
   );

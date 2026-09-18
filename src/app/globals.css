@@ -103,6 +103,7 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
 .hero-shape-fill { top: -26px; right: -18px; width: clamp(120px, 16vw, 190px); height: clamp(120px, 16vw, 190px); background: var(--mint); }
 .hero-shape-ring { bottom: -30px; left: -26px; width: 120px; height: 120px; border: 1px solid rgb(18 77 53 / .18); }
 .hero-image { position: relative; overflow: hidden; aspect-ratio: 4 / 4.4; border-radius: clamp(28px,3vw,44px) clamp(28px,3vw,44px) clamp(28px,3vw,44px) clamp(80px,9vw,140px); box-shadow: 0 40px 80px -40px rgb(18 77 53 / .45); }
+.hero-image video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero-badge { position: absolute; z-index: 2; bottom: clamp(18px, 3vw, 36px); left: clamp(-8px, -1vw, 0px); display: flex; align-items: center; gap: 14px; max-width: min(88%, 300px); padding: 18px 22px; background: #fff; border-radius: 22px; box-shadow: 0 24px 50px -24px rgb(18 77 53 / .4); }
 .hero-badge > span, .soft-icon { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; color: var(--leaf); background: var(--mint); border-radius: 14px; }
 .hero-badge svg { width: 20px; }
@@ -162,11 +163,9 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
 
 /* Structure and numbers */
 .section-heading { max-width: 620px; margin-bottom: clamp(36px,4vw,56px); }
-.structure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px,2.4vw,32px); }
-.structure-main { position: relative; overflow: hidden; min-width: 0; aspect-ratio: 4 / 3.2; border-radius: 30px; box-shadow: 0 36px 70px -44px rgb(18 77 53 / .45); }
-.structure-side { display: flex; min-width: 0; flex-direction: column; gap: clamp(20px,2.4vw,32px); }
-.structure-pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(14px,1.6vw,20px); }
-.structure-pair > div { position: relative; overflow: hidden; aspect-ratio: 1; border-radius: 22px; }
+.structure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px,2.4vw,32px); margin-bottom: clamp(20px,2.4vw,32px); }
+.structure-video { position: relative; overflow: hidden; min-width: 0; aspect-ratio: 3 / 4; border-radius: 30px; box-shadow: 0 36px 70px -44px rgb(18 77 53 / .45); }
+.structure-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .equipment-card { padding: clamp(24px,2.6vw,34px); background: var(--mint); border-radius: 26px; }
 .equipment-card h3 { margin: 0; color: var(--forest); font-size: 21px; font-weight: 800; letter-spacing: -.02em; }
 .equipment-card p { margin: 12px 0 0; color: #3e4f46; font-size: 15.5px; line-height: 1.62; }
@@ -272,11 +271,19 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
 .contact-links a:first-child { color: #fff; font-weight: 700; }
 .contact-links a { overflow-wrap: anywhere; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: clamp(40px,5vw,64px); padding-top: 26px; padding-bottom: 100px; color: rgb(255 255 255 / .6); border-top: 1px solid rgb(255 255 255 / .14); font-size: 13.5px; }
+.footer-bottom a { text-underline-offset: 2px; }
+.footer-bottom a:hover { text-decoration: underline; color: #fff; }
 @keyframes fl-pulse { 0% { box-shadow: 0 0 0 0 rgb(37 211 102 / .45); } 70% { box-shadow: 0 0 0 18px rgb(37 211 102 / 0); } 100% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0); } }
 .whatsapp-float { position: fixed; z-index: 70; right: clamp(16px,2.5vw,32px); bottom: clamp(84px,6vw,32px); display: grid; width: 58px; height: 58px; place-items: center; color: #fff; background: #25d366; border-radius: 50%; animation: fl-pulse 2.8s infinite; transition: transform .25s; }
 .whatsapp-float:hover { transform: scale(1.07); }
 .whatsapp-float svg { width: 28px; }
 .mobile-conversion-bar { display: none; }
+.cookie-consent-banner { position: fixed; z-index: 90; left: 16px; right: 16px; bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; max-width: 720px; margin: 0 auto; padding: 18px 22px; background: var(--forest); color: #fff; border-radius: 20px; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .5); }
+.cookie-consent-banner p { margin: 0; font-size: 14px; line-height: 1.5; color: rgb(255 255 255 / .88); max-width: 480px; }
+.cookie-consent-actions { display: flex; flex: 0 0 auto; gap: 10px; }
+.cookie-consent-actions button { border: 0; border-radius: 10px; padding: 10px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+.cookie-consent-actions button:first-child { background: rgb(255 255 255 / .12); color: #fff; }
+.cookie-consent-actions button:last-child { background: var(--gold); color: var(--forest); }
 
 @media (max-width: 1180px) {
   .desktop-nav, .header-phone { display: none; }
@@ -314,7 +321,7 @@ h1 em, h2 em { color: inherit; font-family: var(--font-instrument), Georgia, ser
   .services-grid { grid-template-columns: 1fr; }
   .split-heading > p { margin-top: 0; }
   .video-grid { gap: 40px; }
-  .structure-pair { gap: 14px; }
+  .structure-grid { max-width: 360px; margin-left: auto; margin-right: auto; }
   .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 38px; }
   .history-visual { order: 2; }
   .slider-controls { position: static; justify-content: flex-end; margin: -12px 0 20px; }
