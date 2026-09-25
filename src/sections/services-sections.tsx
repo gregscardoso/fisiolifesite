@@ -8,18 +8,27 @@ export async function ServicesSection() {
   const { services, contact } = await getSiteContent();
   const published = services.filter((service) => service.published);
   return (
-    <section id="servicos" className="section-white section-anchor">
-      <div className="shell section-pad">
+    <section id="servicos" className="section-white section-anchor section-pad">
+      <div className="shell">
         <div className="split-heading reveal"><div><span className="kicker">Tratamentos</span><h2>Tratamentos pensados para o seu <em>bem-estar.</em></h2></div><p>Uma gama completa de serviços de saúde e bem-estar, conduzidos por uma equipe qualificada e adaptados às necessidades de cada paciente.</p></div>
-        <div className="services-grid">{published.map((service) => <ServiceCard key={service.name} contact={contact} {...service} />)}</div>
+      </div>
+      {/* Faixa contínua: a lista é renderizada duas vezes e a trilha desliza -50% em loop; a cópia fica fora da árvore de acessibilidade. */}
+      <div className="services-marquee reveal" style={{ "--marquee-duration": `${Math.max(published.length, 3) * 7}s` } as React.CSSProperties}>
+        <div className="services-track">
+          {[false, true].map((duplicate) => (
+            <div key={String(duplicate)} className="services-group" aria-hidden={duplicate || undefined}>
+              {published.map((service) => <ServiceCard key={service.name} contact={contact} duplicate={duplicate} {...service} />)}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function ServiceCard({ name, description, image, contact }: Service & { contact: ContactContent }) {
+function ServiceCard({ name, description, image, contact, duplicate }: Service & { contact: ContactContent; duplicate: boolean }) {
   const href = whatsappUrlFor(contact, `Olá! Gostaria de saber mais sobre ${name} na Fisiolife.`);
-  return <a className="service-card reveal" href={href} target="_blank" rel="noopener noreferrer"><div className="service-image"><Image src={image} fill sizes="(max-width: 680px) 92vw, (max-width: 1024px) 45vw, 30vw" alt={name} /></div><div className="service-body"><h3>{name}</h3><p>{description}</p><span>Saiba mais<ArrowRight /></span></div></a>;
+  return <a className="service-card" href={href} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined}><div className="service-image"><Image src={image} fill sizes="(max-width: 760px) 78vw, 360px" alt={duplicate ? "" : name} /></div><div className="service-body"><h3>{name}</h3><p>{description}</p><span>Saiba mais<ArrowRight /></span></div></a>;
 }
 
 export function VideoSection() {
