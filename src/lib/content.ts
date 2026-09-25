@@ -37,7 +37,7 @@ export const services: Service[] = [
   { name: "Fisioterapia", description: "Tratamento dedicado a aliviar a dor e recuperar a mobilidade, com protocolos personalizados para cada quadro.", image: "/images/services/fisioterapia.png", published: true },
   { name: "Pilates", description: "Mais força, postura e flexibilidade em aulas personalizadas que preparam o corpo para a rotina.", image: "/images/services/pilates.png", published: true },
   { name: "Quiropraxia", description: "Ajustes e liberação miofascial para devolver liberdade de movimento e aliviar dores da coluna.", image: "/images/services/quiropraxia.jpg", published: true },
-  { name: "Pilates terapêutico", description: "Protocolos exclusivos para quem convive com dores na coluna, joelhos ou ombros.", image: "/images/services/pilates-terapeutico.png", published: true },
+  { name: "Pilates terapêutico", description: "Protocolos exclusivos para quem convive com dores na coluna, joelhos ou ombros.", image: "/images/services/pilates-terapeutico.jpg", published: true },
   { name: "Pilates para gestantes", description: "Aulas para manter-se ativa com segurança, cuidando do bem-estar físico e mental na gestação.", image: "/images/services/pilates-gestantes.png", published: true },
   { name: "Terapias alternativas", description: "Acupuntura, auriculoterapia, ventosaterapia, reflexologia e massagens para o seu equilíbrio.", image: "/images/services/terapias-alternativas.png", published: true },
   { name: "Drenagens", description: "Sessões de drenagem pós-operatória e para alívio do inchaço causado por retenção de líquidos.", image: "/images/services/drenagens.png", published: true },
