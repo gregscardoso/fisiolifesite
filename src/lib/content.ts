@@ -40,7 +40,7 @@ export const services: Service[] = [
   { name: "Pilates terapêutico", description: "Protocolos exclusivos para quem convive com dores na coluna, joelhos ou ombros.", image: "/images/services/pilates-terapeutico-2.jpg", published: true },
   { name: "Pilates para gestantes", description: "Aulas para manter-se ativa com segurança, cuidando do bem-estar físico e mental na gestação.", image: "/images/services/pilates-gestantes.png", published: true },
   { name: "Terapias alternativas", description: "Acupuntura, auriculoterapia, ventosaterapia, reflexologia e massagens para o seu equilíbrio.", image: "/images/services/terapias-alternativas.png", published: true },
-  { name: "Drenagens", description: "Sessões de drenagem pós-operatória e para alívio do inchaço causado por retenção de líquidos.", image: "/images/services/drenagens.png", published: true },
+  { name: "Drenagens", description: "Sessões de drenagem pós-operatória e para alívio do inchaço causado por retenção de líquidos.", image: "/images/services/drenagens-2.jpg", published: true },
 ];
 
 export const testimonials: Testimonial[] = [
