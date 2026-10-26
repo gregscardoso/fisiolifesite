@@ -75,7 +75,7 @@ const defaultHero: HeroContent = {
   eyebrow: "Fisioterapia & Pilates em Ibiúna",
   titlePrefix: "Movimento, saúde e qualidade de vida ",
   titleEmphasis: "começam aqui.",
-  subtitle: "A Fisiolife reúne fisioterapia, Pilates, quiropraxia e terapias alternativas em um atendimento individualizado, com avaliação personalizada e uma equipe que acompanha cada etapa da sua recuperação.",
+  subtitle: "A Fisiolife reúne fisioterapia, Pilates, quiropraxia e terapias alternativas em um atendimento individualizado, com avaliação personalizada e uma equipe que acompanha cada etapa da sua recuperação. Fisioterapia integrativa, regenerativa, ortomolecular com a Dra Ada Ribeiro.",
   posterImage: "/images/hero/estudio-pilates-fisiolife.png",
   videoUrl: "/videos/hero-tour-fisiolife.mp4",
 };
